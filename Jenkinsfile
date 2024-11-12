@@ -17,7 +17,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Compile the Java application using Maven
-                sh 'mvn clean package'
+                bat 'mvn clean package'
             }
         }
 
@@ -35,9 +35,9 @@ pipeline {
                 // Login and push the image to Docker Hub using credentials stored in Jenkins
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
                     // Docker login to Docker Hub
-                    sh 'docker login -u $DOCKER_USER -p $DOCKER_PASS'
+                    bat 'docker login -u $DOCKER_USER -p $DOCKER_PASS'
                     // Push the image to Docker Hub
-                    sh "docker push ${env.DOCKER_IMAGE}"
+                    bat "docker push ${env.DOCKER_IMAGE}"
                 }
             }
         }
@@ -46,7 +46,7 @@ pipeline {
     post {
         always {
             // Clean up Docker images to save space after the pipeline finishes
-            sh 'docker rmi ${DOCKER_IMAGE} || true'
+            bat 'docker rmi ${DOCKER_IMAGE} || true'
         }
     }
 }
