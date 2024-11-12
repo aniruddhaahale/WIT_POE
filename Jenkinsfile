@@ -10,7 +10,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Pull the code from the GitHub repository
-                git 'https://github.com/aniruddhaahale/your-repo-name.git' // Replace this with your actual GitHub repository URL
+                git 'https://github.com/aniruddhaahale/WIT_POE.git' // Replace this with your actual GitHub repository URL
             }
         }
 
