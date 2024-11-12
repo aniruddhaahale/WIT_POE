@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Replace with your Docker Hub username and desired image name
-        DOCKER_IMAGE = "aniruddhaahale/your-image-name:latest" // Update this to your desired Docker image name
+        DOCKER_IMAGE = "aniruddhaahale/materialsproject/devops:latest" // Update this to your desired Docker image name
     }
 
     stages {
